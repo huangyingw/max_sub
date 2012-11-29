@@ -7,6 +7,19 @@ public class MaxSub {
 		return myMax(fun(data, lo, mid), fun(data, mid, hi), newMax);
 	}
 
+	public static int linearFind(int[] data, int lo, int hi) {
+		int maxSofar = 1;
+		int result = 1;
+		for (int i = lo; i < hi; i++) {
+			if (data[i] <= data[i + 1])
+				maxSofar++;
+			else
+				maxSofar = 1;
+			result = Math.max(maxSofar, result);
+		}
+		return result;
+	}
+
 	public static int funCurrent(int[] data, int lo, int hi, int mid) {
 		int i = mid;
 		int j = mid;
@@ -39,11 +52,14 @@ public class MaxSub {
 
 		data = new int[] { 3, 5, 6, 7 };// 4
 		System.out.println(fun(data, 0, data.length - 1));
+		System.out.println(linearFind(data, 0, data.length - 1));
 
 		data = new int[] { 3, 5, 4, 2, 3, 9, 4 };// 3
 		System.out.println(fun(data, 0, data.length - 1));
+		System.out.println(linearFind(data, 0, data.length - 1));
 
 		data = new int[] { 3, 5, 6, 7, 4, 2, 3, 9, 4 };// 4
 		System.out.println(fun(data, 0, data.length - 1));
+		System.out.println(linearFind(data, 0, data.length - 1));
 	}
 }
